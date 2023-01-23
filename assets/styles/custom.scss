@@ -1,0 +1,286 @@
+
+$primary: #222222;
+$secondary: #000000;
+$success: #6d258f;
+$info: #29d9d5;
+$warning: #111111;
+$danger: #5da98e;
+$light: #c7d7d1;
+
+$select: #222222;
+
+//body {
+//  background-image: url('../images/travel1680x1050.png');
+//  background-repeat: no-repeat;
+//  background-size: cover;
+//}
+
+//*******************************************************   HEADERS     *************************************************
+
+.bgHeader{
+  background: $primary;
+}
+.navbar{
+  height: 10vh
+}
+#navRight{
+width: 270px;
+}
+
+$blue: #29d9d5;
+.colorTextHeader {
+  color: $blue !important;
+}
+//****************************************************   Accueil  *******************************************************
+#home{
+  height: 100vh;
+  background-image: url('../images/travel1680x1050.png');
+  background-repeat: no-repeat;
+  //background-position: center;
+  background-size: cover;
+}
+
+#a-propos {
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  padding: 0 10%;
+
+}
+.title {
+  text-transform: capitalize;
+  margin: 70px 0;
+  font-weight: bold;
+  color: #29d9d5;
+  position: relative;
+  margin-left:15px;
+  font-size: 18px;
+
+}
+.title::after {
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  left: -15px;
+  content: "";
+  background-color: #fff;
+
+}
+.film{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.left {
+  width: 40%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.right {
+  width: 57%;
+  height: 170px;
+}
+
+.left video {
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #29d9d5;
+}
+
+.right h3 {
+  color: #fff;
+  font-size: 25px;
+  margin-bottom: 20px;
+
+}
+.right p {
+  color: #999;
+  font-family: 14px/14px "";
+  margin-bottom: 36px;
+}
+.right a {
+  border: 1px solid #29d9d5;
+  color: #29d9d5;
+  font-size: 14px;
+  padding: 8px 25px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+//*******************************************************     DESTINATION  *********************************************
+#popular-destination {
+  padding: 0 10% ;
+  margin-bottom: 50px;
+}
+#popular-destination .content {
+  /* meme agencement que les flex box */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  /* définir un espace entre les lignes */
+  gap: 32px;
+}
+#popular-destination .content .box {
+  /* cacher tous les éléments qui débordent */
+  overflow: hidden;
+  position: relative;
+  height: 250px;
+  transition: 0.5s;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #29d9d5;
+}
+#popular-destination .content .box img {
+  height: 100%;
+  width: 100%;
+  /* redimenssionner l'image pour remplir toute la zone */
+  object-fit: cover;
+  border-radius: 10px;
+
+}
+.box .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: 0.5s;
+}
+.box .content  h4 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.box .content p {
+  padding: 2px;
+  font-size: 12px;
+}
+/* .box .content p:nth-child(3){
+    margin-bottom: 25px;
+} */
+.box .content a {
+  margin-top: 60px;
+  padding: 10px 60px;
+  border: 2px solid #29d9d5;
+  color: #29d9d5;
+  font-weight: bold;
+
+}
+.box:hover {
+  box-shadow: 0 0 10px #29d9d5;
+}
+.box:hover .content {
+  transform: translateX(0);
+}
+
+//*******************************************************     FOOTER   *************************************************
+
+footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#contact{
+  width: 100%;
+  height: 90vh;
+
+  padding: 0 10%;
+  margin-bottom: 50px;
+
+}
+.formLocalis{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+
+}
+form{
+  width: 42%;
+  height: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #29d9d5;
+}
+form .title{
+  text-transform: uppercase;
+  margin: 0;
+  color: #111;
+  font-weight: bold;
+
+}
+
+form .corps-formulaire{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+form .corps-formulaire .groupe{
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+form .corps-formulaire .gauche .groupe input{
+  margin-top: 5px;
+  padding: 10px 5px 10px 30px;
+  border: 1px solid #c9c9c9;
+  outline-color:  #747cdf;
+  border-radius: 5px;
+}
+form .corps-formulaire .gauche .groupe i{
+  /*----------------------------------------------------------------------------- position: absolute; ---------------------------------------------------------------------------*/
+  left: 0;
+  top: 35px;
+  padding: 9px 8px;
+  color: #747cdf;
+}
+form .corps-formulaire .droite{
+  width: 140%;
+  margin-left: 40px;
+
+}
+form .corps-formulaire .droite .groupe{
+  height: 100%;
+}
+form .corps-formulaire .droite .groupe textarea{
+  width: 110%;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 2px solid #747cdf;
+  outline: none;
+  border-radius: 5px;
+  resize: none;
+  height: 240px;
+
+}
+footer button{
+  width: 40%;
+  height: 5%;
+
+  background-color: #747cdf;
+  color: white;
+  font-size: 15px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+form .pied-formulaire button:hover{
+  transform: scale(1.05);
+
+}
+iframe{
+  border-radius: 10px;
+  box-shadow: 0 0 15px #29d9d5;
+}
