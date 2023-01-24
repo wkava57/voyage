@@ -16,10 +16,23 @@
     </head>
 
     <body>
-    {% include('Accueil.html.twig') %}
+
+{#        {% if block('main') is defined %}#}
+            <section id="home">
+                {% block register %}
+                {% endblock %}
+            </section>
 
 
-        {% block body %}{% endblock %}
+{#        {% endif %}#}
+
+        <section class="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+
+
+
 
 
     </body>
