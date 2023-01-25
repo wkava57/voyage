@@ -12,28 +12,28 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-        {% include ('header.html.twig') %}
-    </head>
 
+    </head>
+    {% include ('header.html.twig') %}
+    {%  block body %}
     <body>
+
 
 {#        {% if block('main') is defined %}#}
             <section id="home">
-                {% block register %}
-                {% endblock %}
+
             </section>
-
-
 {#        {% endif %}#}
 
-        <section class="content">
+
+
             {% block content %}
             {% endblock %}
-        </section>
-
-
-
-
-
     </body>
+
+{% endblock %}
+
+
+
+
 </html>

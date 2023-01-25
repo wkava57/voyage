@@ -19,7 +19,7 @@ $select: #222222;
 
 .bgHeader{
   width: 100%;
-  position: fixed;
+  position: sticky;
   background: $primary;
 }
 .navbar{
@@ -36,6 +36,15 @@ $blue: #29d9d5;
 //*****************************************************  PAGE INSCRIPTIONS **********************************************
 
 
+
+.container{
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 
 
