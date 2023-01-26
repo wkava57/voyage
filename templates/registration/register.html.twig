@@ -3,26 +3,34 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-    <div class="container">
+{#<section class="formRegister">#}
+
+    <section id="home">
+        <div class="formulaire">
+            <h1 class="m-5">Register</h1>
+            <div class="card col-md-6 opacity-75">
+
+                {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
 
 
-            {% for flash_error in app.flashes('verify_email_error') %}
-                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-            {% endfor %}
 
+                {{ form_start(registrationForm) }}
+                    {{ form_row(registrationForm.lastname) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
 
+                <button type="submit" class="btn">Register</button>
+                {{ form_end(registrationForm) }}
 
-            {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }}
+            </div>
+        </div>
+    </section>
+{#</section>#}
 
-            <button type="submit" class="btn">Register</button>
-            {{ form_end(registrationForm) }}
-
-    </div>
 
 {% endblock %}
