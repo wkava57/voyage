@@ -3,7 +3,7 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-{#<section class="formRegister">#}
+
 
     <section id="home">
         <div class="formulaire">
@@ -26,8 +26,7 @@
                     {{ form_row(registrationForm.Password, {
                         label: 'Password'
                     }) }}
-                    {{ form_row(registrationForm.first_options) }}
-                    {{ form_row(registrationForm.second_options) }}
+
                 {{ form_row(registrationForm.agreeTerms) }}
 
                 <button type="submit" class="btn">Submit</button>
@@ -38,7 +37,7 @@
             </div>
         </div>
     </section>
-{#</section>#}
+
 
 
 {% endblock %}

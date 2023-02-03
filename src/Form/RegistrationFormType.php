@@ -104,8 +104,18 @@ class RegistrationFormType extends AbstractType
             ])
 
 //***************************************************  MOT DE PASSE ****************************************************
-            ->add('Password', RepeatedType::class, [
 
+            ->add('Password', RepeatedType::class, options: [
+//                'contraints' => [
+//
+//                    new Regex([
+//                        'pattern' => '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
+//
+////                        'meessage' => 'Votre mot de passe doit contenir au moins une majuscule
+////                        , une minuscule, un chiffre, un caractère spécial et un mimimum de 12 caractères.',
+//                    ]),//
+//
+//                ],
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],

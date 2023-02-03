@@ -55,6 +55,25 @@ $blue: #29d9d5;
   font-weight: bold;
 }
 
+.formLogin{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//***************************************   formulaire mot de passe oublié  *********************************************
+
+.monCompte{
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
 //****************************************************   Accueil  *******************************************************
 
 #home{

@@ -16,23 +16,28 @@
 
         {% include ('header.html.twig') %}
 
-    {%  block body %}
     <body>
+        {%  block body %}
 
 
-        {#        {% if block('main') is defined %}#}
-            {% block home %}
-                <section id="home"></section>
+            {#        {% if block('main') is defined %}#}
+{#                {% block home %}#}
+{#                    <section id="home"></section>#}
+{#                {% endblock %}#}
+            {#        {% endif %}#}
+
+            {% block content %}
             {% endblock %}
-        {#        {% endif %}#}
+
+            {% block account %}
+            {% endblock %}
+
+            {% block test %}
+            {% endblock %}
 
 
-
-        {% block content %}
         {% endblock %}
     </body>
-
-    {% endblock %}
 
 
 </html>
