@@ -9,9 +9,7 @@ $light: #c7d7d1;
 
 $select: #222222;
 
-body {
-  width: 100%;
-}
+
 
 //*******************************************************   HEADERS     *************************************************
 
@@ -31,7 +29,7 @@ $blue: #29d9d5;
 .colorTextHeader {
   color: $blue !important;
 }
-//*****************************************************  PAGE INSCRIPTIONS **********************************************
+//*****************************************************  PAGE INSCRIPTIONS FORMULAIRE ***********************************
 
 .formulaire{
   width: 100%;
@@ -64,21 +62,14 @@ $blue: #29d9d5;
 }
 //***************************************   formulaire mot de passe oublié  *********************************************
 
-.monCompte{
-  width: 100vh;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-}
 
 
 //****************************************************   Accueil  *******************************************************
 
 #home{
   height: 100vh;
-  width: auto;
+  width: 100%;
   background-image: url('../images/travel1680x1050.png');
   background-repeat: no-repeat;
   //background-position: center;

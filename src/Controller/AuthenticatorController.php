@@ -13,10 +13,10 @@ class AuthenticatorController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
          if ($this->getUser()) {
-             return $this->redirectToRoute('target_path');
+             return $this->redirectToRoute('app_account');
          }
 
-        $user = $this->getUser();
+//        $user = $this->getUser();
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
