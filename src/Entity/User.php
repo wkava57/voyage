@@ -34,7 +34,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
+    private bool $isVerified = false;
 
     #[ORM\Column(length: 255)]
     private ?string $Lastname = null;
@@ -120,10 +120,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-//    public function isVerified(): bool
-//    {
-//        return $this->isVerified;
-//    }
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
 
     public function setIsVerified(bool $isVerified): self
     {

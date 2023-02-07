@@ -116,6 +116,8 @@ class ResetPasswordController extends AbstractController
             );
 
             $user->setPassword($encodedPassword);
+//            rajouter  $user->setIsVerified(true); pour éviter que la vérification se remette à zéro
+            $user->setIsVerified(true);
             $this->entityManager->flush();
 
             // The session is cleaned up after the password has been changed.
