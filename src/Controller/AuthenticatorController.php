@@ -13,7 +13,7 @@ class AuthenticatorController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
          if ($this->getUser()) {
-             return $this->redirectToRoute('app_account');
+             return $this->redirectToRoute('app_home');
          }
 
 //        $user = $this->getUser();
