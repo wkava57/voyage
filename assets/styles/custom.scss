@@ -17,9 +17,11 @@ $select: #222222;
   width: 100%;
   position: fixed;
   background: $primary;
+  z-index: 99999;
 }
 .navbar{
-  height: 10vh
+  height: 10vh;
+
 }
 #navRight{
 width: 270px;

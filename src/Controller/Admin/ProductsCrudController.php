@@ -22,18 +22,21 @@ class ProductsCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+
         return [
             TextField::new('Destination'),
-            SlugField::new('slug')->setTargetFieldName('name'),
+            TextField::new('title'),
+            SlugField::new('slug')->setTargetFieldName('title'),
+
             ImageField::new('illustration')
-            ->setBasePath('images')
+            ->setBasePath('uploads')
             ->setUploadDir('public/uploads')
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             ->setRequired(false),
-            TextField::new('title'),
+
             TextareaField::new('description'),
-            BooleanField::new('isBest'),
-//            MoneyField::new('price')->setCurrency("EURO"),
+//            BooleanField::new('isBest'),
+            MoneyField::new('price')->setCurrency("EUR"),
             AssociationField::new('category'),
         ];
     }

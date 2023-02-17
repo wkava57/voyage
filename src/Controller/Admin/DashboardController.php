@@ -44,14 +44,21 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Voyage');
+//            A voir pour faire un lien vers la page du compte administrator
+//            ->setButton('return');
 
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+
+        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
         yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Categories', 'fa fa-list', Category::class);
         yield MenuItem::linkToCrud('Products', 'fa fa-plane', Products::class);
+
+        yield MenuItem::linkToRoute('Retour Accueil', 'fa fa-home', 'app_home');
+
+
     }
 }

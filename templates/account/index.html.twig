@@ -4,13 +4,57 @@
 {% block title %}Compte Utilisateur{% endblock %}
 
 {% block body %}
+
     <section id="home">
+
         <div class="formulaire">
-            <h1>Compte</h1>
-            <p>Bienvenue sur le compte utilisateur</p>
+            <div class="col-12 text-center">
+                <h1>Compte</h1>
+                <p>Bienvenue sur le compte utilisateur</p>
+            </div>
+
+            <hr />
+            <div class="row">
+                <div class="gauche col-4">
+                    <ul>
+                        <ol  class="card p-2">
+                            <div class="etapeOne">
+                                <p>Modifier mot de passe</p>
+                                <p>verifier email de confirmation</p>
+                                <p>connexion</p>
+                                <p>deconnexion</p>
+                            </div>
+                        </ol>
+                    </ul>
+                </div>
+                <hr />
+                <div class="centre col-4">
+                    <ul>
+                        <ol  class="card p-2">
+                            <div class="etapeTwo">
+                                <p>Dashboard</p>
+                                <p>User</p>
+                                <p>Category</p>
+                                <p>Product</p>
+                            </div>
+                        </ol>
+                    </ul>
+                </div>
+                <hr />
+                <div class="droite col-4">
+                    <ul>
+                        <ol  class="card p-2">
+                            <div class="etapeThree">
+                                <p>Panier</p>
+                                <p>Commande</p>
+                                <p>Paiement</p>
+                                <p>blog</p>
+                            </div>
+                        </ol>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-
 
     </section>
 {% endblock %}
