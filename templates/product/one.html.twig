@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ products.destination }}{% endblock %}
+
+{% block body %}
+    <div class="title mt-0">
+        <h1>{{ products.destination }}</h1>
+    </div>
+
+    <div class="row container m-auto h-100">
+        <div class="col-md-4">
+            <h3> {{ products.destination}} </h3>
+            <p> {{ products.title}} </p>
+            <span><img src="Uploads/{{ products.illustration }}" alt="{{ products.destination }}" class="img-fluid"></span>
+
+            <span>{{ (products.price /100)|number_format(2) }} €</span>
+        </div>
+
+        <div class="col-md-8 w-50 m-auto">
+            {{ products.description }}
+        </div>
+
+        <div>
+
+        </div>
+
+
+    </div>
+
+
+{% endblock %}

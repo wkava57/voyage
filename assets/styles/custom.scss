@@ -8,16 +8,20 @@ $danger: #5da98e;
 $light: #c7d7d1;
 
 $select: #222222;
+//******************************************************   html   ******************************************************
+body{
+  background-color: $primary;
+}
 
 
-
-//*******************************************************   HEADERS     *************************************************
+//*******************************************************   HEADERS     ************************************************
 
 .bgHeader{
   width: 100%;
   position: fixed;
   background: $primary;
   z-index: 99999;
+
 }
 .navbar{
   height: 10vh;
@@ -129,41 +133,48 @@ $blue: #29d9d5;
   width: 80%;
   height: 80%;
   border-radius: 10px;
-  box-shadow: 0 0 10px #29d9d5;
+  box-shadow: 0 0 10px $info;
 }
 
 .right h3 {
-  color: #fff;
+  color: $info;
   font-size: 25px;
   margin-bottom: 20px;
 
 }
 .right p {
-  color: #999;
+  color: $info;
   font-family: 14px/14px "";
   margin-bottom: 36px;
 }
 .right a {
   border: 1px solid #29d9d5;
-  color: #29d9d5;
+  color: $info;
   font-size: 14px;
   padding: 8px 25px;
   font-weight: bold;
   border-radius: 10px;
 }
+//*******************************************************   PAGE DESTINATION  ******************************************
+
+.container{
+  background-color: $secondary;
+}
+
+
 //*******************************************************     DESTINATION  *********************************************
 #popular-destination {
   padding: 0 10% ;
   margin-bottom: 50px;
 }
-#popular-destination .content {
-  /* meme agencement que les flex box */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  /* définir un espace entre les lignes */
-  gap: 32px;
-}
-#popular-destination .content .box {
+//#popular-destination .content {
+//  /* meme agencement que les flex box */
+//  display: grid;
+//  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+//  /* définir un espace entre les lignes */
+//  gap: 32px;
+//}
+.box {
   /* cacher tous les éléments qui débordent */
   overflow: hidden;
   position: relative;
@@ -172,7 +183,7 @@ $blue: #29d9d5;
   border-radius: 10px;
   box-shadow: 0 0 10px #29d9d5;
 }
-#popular-destination .content .box img {
+.box img {
   height: 100%;
   width: 100%;
   /* redimenssionner l'image pour remplir toute la zone */
@@ -180,7 +191,7 @@ $blue: #29d9d5;
   border-radius: 10px;
 
 }
-.box .content {
+.content {
   position: absolute;
   top: 0;
   left: 0;
@@ -215,7 +226,7 @@ $blue: #29d9d5;
   box-shadow: 0 0 10px #29d9d5;
 }
 .box:hover .content {
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 //*******************************************************     FOOTER   *************************************************

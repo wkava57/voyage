@@ -86,7 +86,7 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Votre email',
                 'attr' => [
-                    'placeholder' => 'Veuillez saisir votre mot de passe',
+                    'placeholder' => 'Veuillez saisir votre email',
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
@@ -118,10 +118,22 @@ class RegistrationFormType extends AbstractType
 //                ],
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'options' => ['attr' => [
+                    'class' => 'password-field'
+                ]],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => [
+                    'label' => 'Password',
+                    'attr' => [
+                        'placeholder' => 'Veuillez saisir votre mot de passe'
+                    ]
+                ],
+                'second_options' => [
+                    'label' => 'Repeat Password',
+                    'attr' => [
+                        'placeholder' => 'Veuillez confirmer votre mot de passe'
+                    ]
+                ],
             ]);
 
 //            ->add('Password', PasswordType::class, [

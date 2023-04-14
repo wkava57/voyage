@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos destinations{% endblock %}
+
+{% block body %}
+    <div class="title mt-0">
+        <h1>Nos destinations</h1>
+    </div>
+
+    <div class="container row m-auto">
+        {% for product in products %}
+            <div class="col-md-4">
+                <div class="product-item text-center">
+                    <div class="box">
+                        <a href="{{ path('app_product', {'slug':product.slug}) }} ">
+                            <img src="Uploads/{{ product.illustration }}" alt="{{ product.destination }}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="content">
+                        <div>
+                            <h4>{{ product.destination }}</h4>
+                            <span>{{ product.title }}</span>
+                            <div></div>
+                            <span>{{ (product.price /100)|number_format(2, ',', '.') }} €</span>
+                            <br><br>
+{#                            <a href="#">Lire Plus</a>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+
+    destinations
+{% endblock %}

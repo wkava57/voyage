@@ -2,7 +2,7 @@
 
 
 {% block body %}
-{#    <section id="home"></section>#}
+    <section id="home"></section>
     <div id="a-propos">
         <h1 class="title">à propos</h1>
         <div class="film">
@@ -14,26 +14,32 @@
             <div class="right">
                 <h3>Nous voyageons pour chercher d'autres états, d'autres vies, d'autres, âmes.</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat ipsam officiis atque, doloremque eos reprehenderit deleniti ipsum dicta aliquid .</p>
-                <a href="#">Lire Plus</a>
+                <a href="#">Details</a>
             </div>
         </div>
     </div>
 
 
     <div id="popular-destination">
+{#        <h1>Nos Destinations</h1>#}
+{#        {% for product in products %}#}
+{#            <div class="col-md-4">#}
+
+{#            </div>#}
+{#        {% endfor %}#}
         <h1 class="title">destinations populaires</h1>
         <div class="content">
             <!-- box -->
             <div class="box">
                 <img src= "{{ asset('build/images/bali/bali.jpg') }}" alt="...">
-                {#                "{{ asset('images/image.jpg') }}"#}
+                                "{{ asset('images/image.jpg') }}"
                 <div class="content">
                     <div>
                         <h4>Bali</h4>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         <p>Ea iusto ipsa repudiandae amet conseq.</p>
                         <br><br>
-                        <a href="#">Lire Plus</a>
+                        <a href="#">Détails</a>
                     </div>
                 </div>
             </div>
