@@ -3,29 +3,42 @@
 {% block title %}{{ products.destination }}{% endblock %}
 
 {% block body %}
-    <div class="title mt-0">
-        <h1>{{ products.destination }}</h1>
+{#    <div class="title mt-0">#}
+{#        <h1 class="text-center">{{ products.destination }}</h1>#}
+{#    </div>#}
+
+    <div class="destination row m-auto w-75">
+        <div class="picture col-md-4">
+
+            <h3 class="h-25 text-center"> {{ products.destination}} </h3>
+            <div class="card">
+                <img src="../Uploads/{{ products.illustration }}" alt="{{ products.destination }}" class="img-fluid">
+            </div>
+            <div class="h-25">
+                <p class="my-5"> {{ products.title}} </p>
+                <div>
+                    <a href="{{ path('app_products') }}">Retour</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="description col-md-8 w-50">
+            <div class="price">
+                <span>{{ (products.price /100)|number_format(2) }} €</span>
+            </div>
+            <div class="btnReservation">
+                <button>Reservation</button>
+            </div>
+            <div class="text">
+                {{ products.description }}
+            </div>
+
+        </div>
     </div>
 
-    <div class="row container m-auto h-100">
-        <div class="col-md-4">
-            <h3> {{ products.destination}} </h3>
-            <p> {{ products.title}} </p>
-            <span><img src="Uploads/{{ products.illustration }}" alt="{{ products.destination }}" class="img-fluid"></span>
-
-            <span>{{ (products.price /100)|number_format(2) }} €</span>
-        </div>
-
-        <div class="col-md-8 w-50 m-auto">
-            {{ products.description }}
-        </div>
-
-        <div>
-
-        </div>
-
-
-    </div>
+{#    <div class="btnPanier text-center">#}
+{#        <button class="rounded-3 b" type="submit">Ajouter au panier</button>#}
+{#    </div>#}
 
 
 {% endblock %}

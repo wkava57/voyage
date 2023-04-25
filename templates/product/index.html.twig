@@ -3,36 +3,58 @@
 {% block title %}Nos destinations{% endblock %}
 
 {% block body %}
+
     <div class="title mt-0">
         <h1>Nos destinations</h1>
     </div>
 
-    <div class="container row m-auto">
-        {% for product in products %}
-            <div class="col-md-4">
-                <div class="product-item text-center">
-                    <div class="box">
-                        <a href="{{ path('app_product', {'slug':product.slug}) }} ">
-                            <img src="Uploads/{{ product.illustration }}" alt="{{ product.destination }}" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div>
-                            <h4>{{ product.destination }}</h4>
-                            <span>{{ product.title }}</span>
-                            <div></div>
-                            <span>{{ (product.price /100)|number_format(2, ',', '.') }} €</span>
-                            <br><br>
-{#                            <a href="#">Lire Plus</a>#}
+    <div class="container">
+        <div class="row">
+            <div class="filter col-md-3">
+                <div class="title">
+                    <h2 class="text-center">Filtrer</h2>
+                </div>
+
+                <div class="formFilter" >
+                    {{ form(form) }}
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <div class="title mt-0">
+                    <h2>Nos destinations</h2>
+                </div>
+                <div class="row m-auto">
+                    {% for product in products %}
+                        <div class="col-md-4">
+                            <div class="product-item text-center">
+                                <div class="boxProduct">
+                                    <div class="card">
+                                        <a href="{{ path('app_product', {'slug':product.slug}) }} ">
+                                            <img src="Uploads/{{ product.illustration }}" alt="{{ product.destination }}" class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <div class="cardDescription">
+                                        <h4>{{ product.destination }}</h4>
+                                        <br>
+
+                                        <span>{{ product.title }}</span>
+                                        <br>
+                                        <span>{{ (product.price /100)|number_format(2, ',', '') }} €</span>
+                                    </div>
+
+
+                                    <br>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-
-        {% endfor %}
+        </div>
     </div>
 
 
 
-    destinations
+
 {% endblock %}

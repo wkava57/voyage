@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Classe\Search;
 use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -37,6 +38,30 @@ class ProductRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findWithSearch(Search $search)
+    {
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c', 'p')
+            // besoin de faire une jointure product et catégory
+            ->join('p.category', 'c');
+
+        if (!empty($search->categories)) {
+            $query = $query
+                ->andWhere('c.id IN (:categories)')
+//methode setParameter ou on lui passe la clé qui est le nom de la variable injecté au dessus et on deuxième paramètre on lui donne la valeur de cette clé
+                ->setParameter('categories', $search->categories);
+        }
+        if (!empty($search->string)) {
+            $query = $query
+                ->andWhere('p.name LIKE:string')
+//                Ce string que je passe en paramètre est équivaut à search string
+                ->setParameter('string', "%{$search->string}%");
+        }
+
+        return $query->getQuery()->getResult();
     }
 
 //    /**

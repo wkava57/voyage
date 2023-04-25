@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Classe\Search;
 use App\Entity\Products;
+use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
@@ -20,14 +22,29 @@ class ProductController extends AbstractController
 
 
     #[Route('/destinations', name: 'app_products')]
-    public function index(): Response
+    public function index(Request $request)
     {
         $products = $this->entityManger->getRepository(Products::class)->findAll();
 
+        $search = new Search();
+//  appelé form avec une méthode $this injecte le nom de mon formulaire et passe en deuxième paramètre l'instence de ma class
+// que je mets au dessus $search = new Search();
+        $form = $this->createForm(SearchType::class, $search);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $products = $this->entityManger->getRepository(Products::class)->findWithSearch($search);
+
+//            $search = $form->getData();
+        }
+//      passer à twig
         return $this->render('product/index.html.twig',[
-            'products' => $products
+            'products' => $products,
+            'form' => $form->createView()
         ]);
     }
+
+
 
     #[Route('/destination/{slug}', name: 'app_product')]
     public function one($slug)
