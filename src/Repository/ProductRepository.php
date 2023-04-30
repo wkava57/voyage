@@ -3,26 +3,26 @@
 namespace App\Repository;
 
 use App\Classe\Search;
-use App\Entity\Products;
+use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Products>
+ * @extends ServiceEntityRepository<Product>
  *
- * @method Products|null find($id, $lockMode = null, $lockVersion = null)
- * @method Products|null findOneBy(array $criteria, array $orderBy = null)
- * @method Products[]    findAll()
- * @method Products[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Product|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Product|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Product[]    findAll()
+ * @method Product[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ProductRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Products::class);
+        parent::__construct($registry, Product::class);
     }
 
-    public function save(Products $entity, bool $flush = false): void
+    public function save(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -31,7 +31,7 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Products $entity, bool $flush = false): void
+    public function remove(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -39,26 +39,21 @@ class ProductRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
-    public function findWithSearch(Search $search)
+    /**
+     * Requête qui me permet de récuperer les produits en fonction de la recherche de l'utilisateur
+     * @return Product[]
+     */
+    public function findWithSearch (Search $search)
     {
         $query = $this
             ->createQueryBuilder('p')
             ->select('c', 'p')
-            // besoin de faire une jointure product et catégory
             ->join('p.category', 'c');
 
         if (!empty($search->categories)) {
-            $query = $query
+            $query =$query
                 ->andWhere('c.id IN (:categories)')
-//methode setParameter ou on lui passe la clé qui est le nom de la variable injecté au dessus et on deuxième paramètre on lui donne la valeur de cette clé
                 ->setParameter('categories', $search->categories);
-        }
-        if (!empty($search->string)) {
-            $query = $query
-                ->andWhere('p.name LIKE:string')
-//                Ce string que je passe en paramètre est équivaut à search string
-                ->setParameter('string', "%{$search->string}%");
         }
 
         return $query->getQuery()->getResult();

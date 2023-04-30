@@ -5,13 +5,17 @@ namespace App\Form;
 use App\Classe\Search;
 use App\Entity\Category;
 use App\Entity\User;
+use Faker\Provider\Address;
 use mysql_xdevapi\BaseResult;
+use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url;
+use phpDocumentor\Reflection\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use function Sodium\add;
 
 class SearchType extends AbstractType
 {
@@ -27,7 +31,7 @@ class SearchType extends AbstractType
 //                ]
 //            ])
             ->add('categories', EntityType::class,[
-                'label' => 'Sélectionnez des catégories',
+                'label' => 'Choix des catégories',
                 'required' => true,
                 'class' => Category::class,
                 'multiple'=> true,
@@ -37,8 +41,11 @@ class SearchType extends AbstractType
                 'label' => 'Filtre',
                 'attr' => [
                     'class' => 'btn-block btn-info'
+
                 ]
             ]);
+
+
     }
     public function configureOptions(OptionsResolver $resolver)
     {

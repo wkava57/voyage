@@ -33,6 +33,8 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $cart = new Cart();
+            $user->setCart($cart);
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -41,6 +43,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $entityManager->persist($cart);
             $entityManager->persist($user);
             $entityManager->flush();
 

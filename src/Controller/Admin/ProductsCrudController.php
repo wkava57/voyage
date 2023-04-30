@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Products;
+use App\Entity\Product;
 use Doctrine\ORM\Mapping\Id;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -19,7 +19,7 @@ class ProductsCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Products::class;
+        return Product::class;
     }
 
 
@@ -28,7 +28,8 @@ class ProductsCrudController extends AbstractCrudController
 
         return [
             IdField::new('id')->setFormTypeOption('disabled', true),
-            TextField::new('Destination'),
+            TextField::new('depart'),
+            TextField::new('destination'),
             TextField::new('title'),
             SlugField::new('slug')->setTargetFieldName('title'),
 

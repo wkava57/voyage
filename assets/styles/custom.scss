@@ -12,15 +12,16 @@ $select: #222222;
 //*******************************************************   HEADERS     ************************************************
 
 .bgHeader{
-  width: 100%;
-  color: #29d9d5;
+  height: 13vh;
+  width: 100vw;
+  color: $info;
   position: fixed;
   background: $primary;
   z-index: 99999;
 
 }
 .navbar{
-  height: 13vh;
+  height: 100%;
 
 }
 #navRight{
@@ -74,7 +75,7 @@ $blue: #29d9d5;
   width: 100%;
   background-image: url('../images/travel1680x1050.png');
   background-repeat: no-repeat;
-  //background-position: center;
+  background-position: center;
   background-size: cover;
 }
 
@@ -151,24 +152,28 @@ $blue: #29d9d5;
   font-weight: bold;
   border-radius: 10px;
 }
-//******************************************************   PAGE FILTRE      ********************************************
+//******************************************************   PAGE FILTRE /  PAGE DESTINATION    ********************************************
 .formFilter form{
   width: 90%;
   margin: 0;
 }
-
-.filter .title {
-  margin: 0;
-  height: 9%;
+.pageDestinations{
+    padding: 10% 5%;
+}
+.pageDestinations .products legend{
+  font-size: 25px;
 }
 
-
-
-//*******************************************************   PAGE DESTINATIONS  ******************************************
-
+.desTitle {
+  margin: 0;
+  height: 9%;
+  color: $info;
+}
 //.container{
 //  background-color: $light;
 //}
+
+
 .boxProduct .card, .boxProduct img{
   border-radius: 10px;
   box-shadow: 5px 5px 20px 0 rgb(0,0,0);
@@ -178,11 +183,9 @@ $blue: #29d9d5;
   }
 }
 
-
-
-
-
-//******************************************************    PAGE DESTINATIONS  *****************************************
+//.pageDestinations .products{
+//  padding: 20% 5%;
+//}
 
 .destination{
   height: 100vh;
@@ -216,6 +219,7 @@ $blue: #29d9d5;
 
 //*******************************************************   PAGE PANIER  ***********************************************
 .titleCart h1{
+  padding-top: 100px;
 }
 
 

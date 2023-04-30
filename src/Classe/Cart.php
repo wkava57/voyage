@@ -3,36 +3,55 @@
 namespace App\Classe;
 
 
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 
 class Cart
 {
-    // créer une variable session pour obtenir la sessionInterface au sein de ma classe
-    private $session;
+        private  RequestStack $requestStack;
 
-    //ensuite la construire, dès que ma classe sera appelé la function constructeur va être initialiser et lui injecter SessionInterface et lui donner la variable session
-    //utiliser la sessionInterface dans la function add et injecter la variable id dans la session
-    public function __construct(SessionInterface $session)
-    {
-//        pour que cela soit accessible
-        $this->session = $session;
 
-    }
-    public function add($id): void
-    {
-        //set une session nommé cart tu lui associes un tableau avec tous les produits de mon panier ou je trouve l'id produit et quantité
-        $this->session->set('cart', [
-            [
-                'id' => $id,
-                'quantity' => 1
-            ]
-        ]);
-    }
 
-    public function  get()
-    {
-        return $this->session->get('cart');
-    }
+    public function __construct(RequestStack $requestStack)
+        {
+            $this->requestStack = $requestStack;
+        }
+// une fonction pour remplir mon panier
+        public function add($id): void
+        {
+//            chercher la session cart s'il ne trouve renvoie un tableau que j'ai mis en deuxième paramètre
+            $cart = $this->requestStack->getSession()->get('cart', []);
+            if (!empty($cart[$id])) {
+                $cart[$id]++;
+            } else{
+                $cart[$id] = 1;
+            }
+            $this->getSession()->set('cart', $cart);
+//            une fois la condition d'opération effectué plus besoin de set le tableau
+//            $this->getSession()->set('cart', [
+//                'id' => $id,
+//                'quantity' => 1
+//            ]);
+
+
+        }
+//        une fonction pour vider mon panier
+        public function remove()
+        {
+            return $this->getSession()->remove('cart');
+        }
+
+        public function get()
+        {
+            return $this->getSession()->get('cart');
+        }
+
+        private function getSession(): SessionInterface
+        {
+            return $this->requestStack->getSession();
+        }
+
+
+
+
 }
-

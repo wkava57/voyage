@@ -16,8 +16,9 @@
             </div>
             <div class="h-25">
                 <p class="my-5"> {{ products.title}} </p>
+
                 <div>
-                    <a href="{{ path('app_products') }}">Retour</a>
+                    <a href="{{ path('app_products')}}">Retour</a>
                 </div>
             </div>
         </div>
@@ -27,7 +28,7 @@
                 <span>{{ (products.price /100)|number_format(2) }} €</span>
             </div>
             <div class="btnReservation">
-                <button>Reservation</button>
+                <a href="{{ path('add_cart', {'id' : products.id}) }}">Réservation</a>
             </div>
             <div class="text">
                 {{ products.description }}

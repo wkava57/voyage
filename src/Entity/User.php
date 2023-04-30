@@ -45,6 +45,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 20)]
     private ?string $Telephone = null;
 
+//    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+//    private ?Cart $cart = null;
+
 //    #[ORM\Column]
 //    private ?bool $IsVerified = null;
 //    private $Is_Verified;
@@ -167,6 +170,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-
 }

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Classe\Search;
-use App\Entity\Products;
+use App\Entity\Product;
 use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,7 +24,7 @@ class ProductController extends AbstractController
     #[Route('/destinations', name: 'app_products')]
     public function index(Request $request)
     {
-        $products = $this->entityManger->getRepository(Products::class)->findAll();
+        $product = $this->entityManger->getRepository(Product::class)->findAll();
 
         $search = new Search();
 //  appelé form avec une méthode $this injecte le nom de mon formulaire et passe en deuxième paramètre l'instence de ma class
@@ -33,13 +33,13 @@ class ProductController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-            $products = $this->entityManger->getRepository(Products::class)->findWithSearch($search);
+            $product = $this->entityManger->getRepository(Product::class)->findWithSearch($search);
 
 //            $search = $form->getData();
         }
 //      passer à twig
         return $this->render('product/index.html.twig',[
-            'products' => $products,
+            'products' => $product,
             'form' => $form->createView()
         ]);
     }
@@ -47,9 +47,10 @@ class ProductController extends AbstractController
 
 
     #[Route('/destination/{slug}', name: 'app_product')]
+//    la fonction show que j'ai renommé en one pour un product
     public function one($slug)
     {
-        $product = $this->entityManger->getRepository(Products::class)->findOneBySlug($slug);
+        $product = $this->entityManger->getRepository(Product::class)->findOneBySlug($slug);
 
 
         if (!$product) {

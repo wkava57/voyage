@@ -4,29 +4,29 @@
 
 {% block body %}
 
-    <div class="title mt-0">
-        <h1>Nos destinations</h1>
-    </div>
+{#    <div class="title mt-0">#}
+{#        <h1>Nos destinations</h1>#}
+{#    </div>#}
 
-    <div class="container">
-        <div class="row">
-            <div class="filter col-md-3">
-                <div class="title">
+    <div class="pageDestinations">
+        <div class="products row">
+            <div class="filter col-md-3 ">
+                <div class="desTitle">
                     <h2 class="text-center">Filtrer</h2>
                 </div>
 
-                <div class="formFilter" >
+                <div class="formFilter">
                     {{ form(form) }}
+{#                    <a href="{{ path('app_products') }}">Retour</a>#}
                 </div>
-
             </div>
-            <div class="col-md-9">
-                <div class="title mt-0">
-                    <h2>Nos destinations</h2>
+            <div class="destinations col-md-9">
+                <div class="desTitle mt-0 text-center">
+                    <h1>Nos destinations</h1>
                 </div>
                 <div class="row m-auto">
                     {% for product in products %}
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-6">
                             <div class="product-item text-center">
                                 <div class="boxProduct">
                                     <div class="card">
