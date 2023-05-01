@@ -33,6 +33,9 @@
                             <a class="nav-link" title="Accès à votre page" href="{{ path('app_account')}}"><img src="{{ asset("build/images/Icon/utilisateur1.png") }}" width="auto" height="30"> {{ app.user.lastname }}</a> |
                             <a class="nav-link" href="{{ path('app_logout') }}">deconnexion</a>
                         {% endif%}
+                        <a href="{{ path('app_cart') }}">
+                            <img src="{{ asset('build/images/Icon/panier.png') }}" width="22px" alt="icon de gestion des commandes">
+                        </a>
 
                     {% else %}
 
@@ -40,6 +43,7 @@
                         <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
 
                     {% endif %}
+                    
 
 
                     </div>

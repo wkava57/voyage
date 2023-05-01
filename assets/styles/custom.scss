@@ -32,7 +32,30 @@ $blue: #29d9d5;
 .colorTextHeader {
   color: $blue !important;
 }
-//*****************************************************  PAGE INSCRIPTIONS FORMULAIRE ***********************************
+//*****************************************************  PAGE ACCOUNT  *************************************************
+
+.account .container{
+  padding-top: 150px;
+}
+
+
+//****************************************************  PAGE GESTION DES ADRESSES  *************************************
+#road{
+  height: 100vh;
+  width: 100%;
+  background-image: url('../images/adresse.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.adresses .container{
+  padding-top: 150px;
+
+}
+
+
+//*****************************************************  PAGE INSCRIPTIONS FORMULAIRE **********************************
 
 .formulaire{
   width: 100%;
@@ -221,7 +244,14 @@ $blue: #29d9d5;
 .titleCart h1{
   padding-top: 100px;
 }
-
+.modif{
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+}
+.total{
+  margin: 0 150px;
+}
 
 
 

@@ -7,6 +7,7 @@ use App\Classe\Cart;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,19 +23,36 @@ class CartController extends AbstractController
 
 //    *************************************************  PANIER  *******************************************************
     #[Route('/panier', name: 'app_cart')]
-    public function index(Cart $cart): Response
+    public function index(Cart $cart, RequestStack $requestStack): Response
     {
-        $cartAll = [];
-        foreach ($cart->get() as $id => $quantity) {
-            $cartAll[] = [
-                'product' => $this->entityManager->getRepository(Product::class)->findOneById($id),
-                'quantity' => $quantity
-            ];
-        }
 
+//        $cart = $requestStack->getSession()->get('cart');
+//        if (empty($cart)) {
+//            return $this->redirectToRoute('app_products');
+//        }
+
+//        $cartAll = [];
+//
+//        foreach ($cart->get() as $id => $quantity) {
+//            $product_object = $this->entityManager->getRepository(Product::class)->findOneById($id);
+//            if (!$product_object) {
+//                $this->delete($id);
+//                continue;
+//            }
+//            $cartAll[] = [
+//                'product' => $product_object,
+//                'quantity' => $quantity
+//            ];
+//        }
         return $this->render('cart/index.html.twig', [
-            'cart' => $cartAll
+//            'cart' => $cartAll
+                'cart' => $cart->getFull()
+
+
+
         ]);
+
+
     }
 
 //    ************************************************ ADD CART ********************************************************
@@ -58,4 +76,33 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('app_products');
     }
+
+//**************************************************  DELETE  **********************************************************
+
+    #[Route('/cart/delete/{id}', name: 'delete_cart')]
+    public function delete(Cart $cart, int $id): Response
+    {
+        $cart->delete($id);
+
+        return $this->redirectToRoute('app_cart');
+    }
+
+//*************************************************  DECREASE  *********************************************************
+
+    #[Route('/cart/decrease/{id}', name: 'decrease_cart')]
+    public function decrease(Cart $cart, int $id): Response
+    {
+        $cart->decrease($id);
+
+        return $this->redirectToRoute('app_cart');
+    }
+
+
+
+
+
+
 }
+
+
+

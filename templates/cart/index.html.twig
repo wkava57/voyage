@@ -4,54 +4,78 @@
 
 {% block body %}
 
-    <div class="container">
-        <div class="titleCart">
-            <h1>Mon panier</h1>
+        <div class="table px-5">
+            <div class="titleCart">
+                <h1>Mon panier</h1>
 
-            Retrouver l'ensemble des produits que vous avez ajouté à votre panier.
-            <hr>
-            {{ dump(cart) }}
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Départ</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Nombre de personne(s)</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Total</th>
+                Retrouver l'ensemble des produits que vous avez ajouté à votre panier.
+                <hr>
+    {% if cart|length > 0 %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">illustration</th>
+                        <th scope="col">Départ</th>
+                        <th scope="col">Destination</th>
+                        <th class="text-center" scope="col">Nombre de personne(s)</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Total</th>
 
-                </tr>
-                </thead>
-                <tbody>
-                {% for product in cart %}
-                    {{ dump(product) }}
-                <tr>
-                    <th>{{ product.product.depart }}</th>
-                    <td>{{ product.product.destination }}</td>
-                    <td>{{ product.product.quantity }}</td>
-                    <td>{{ (product.product.price /100)|number_format(2, ',', '') }} €</td>
-                    <td>total</td>
-                </tr>
-                {% endfor %}
-{#                <tr>#}
-{#                    <th scope="row">2</th>#}
-{#                    <td>Jacob</td>#}
-{#                    <td>Thornton</td>#}
-{#                    <td>@fat</td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <th scope="row">3</th>#}
-{#                    <td>Larry the Bird</td>#}
-{#                    <td>Rajout</td>#}
-{#                    <td>@twitter</td>#}
-{#                </tr>#}
-                </tbody>
-            </table>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set total = null %}
+                    {% for product in cart %}
+                    <tr>
+                        <th>
+                            <img src="../uploads/{{ product.product.illustration }}" alt="{{ product.product.destination }}" height="50px">
+                        </th>
+                        <td>{{ product.product.depart }}</td>
+                        <td>{{ product.product.destination }}</td>
 
+                        <td class="modif text-center">
+
+                            <a href="{{ path('decrease_cart', {'id' : product.product.id} ) }}">
+                                <img src="{{ asset('build/images/Icon/moins.png') }}" width="20px" alt="Supprimer une quantité">
+                            </a>
+                            x   {{ product.quantity }}
+                            <a href="{{ path('add_cart', {'id' : product.product.id}) }}">
+                                <img src="{{ asset('build/images/Icon/plus.png') }}" width="20px" alt="Rajouter une quantité">
+                            </a>
+                        </td>
+                        <td>{{ (product.product.price /100)|number_format(2, ',', '') }} €</td>
+                        <td>{{ ((product.product.price * product.quantity) /100)|number_format(2, ',', '') }} €</td>
+                        <td class="delete" width="5%">
+                            <a href="{{ path('delete_cart', {'id' : product.product.id}) }}">
+                                <img src="{{ asset('build/images/Icon/delete.png') }}" width="20px" alt="Supprimer mon produit">
+                            </a>
+
+                        </td>
+                    </tr>
+
+                        {% set total = total + (product.product.price * product.quantity) %}
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                <div class="total text-end">
+            {#      <b>Nombre de produit :</b> {{ cart|length }}<br/>#}
+                    <b>Total de mon panier :</b>   {{ (total /100)|number_format(2, ',', '') }} €
+
+                    <div class="bouton mt-5">
+                        <a href="" class="btn btn-success btn-block">Valider mon panier</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    {% else %}
+
+        <div class="message">
+            <p><b>Votre panier est vide.  <a href="{{ path('app_products') }}">choisir une autre destination</a></b></p>
+        </div>
 
 
-
+    {% endif %}
 
 {% endblock %}
