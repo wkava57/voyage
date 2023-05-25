@@ -1,0 +1,162 @@
+@import "color";
+
+
+#home{
+  height: 100vh;
+  width: 100%;
+  background-image: url('../images/travel1680x1050.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#a-propos {
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  padding: 0 10%;
+
+  .film{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .left {
+      width: 40%;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+    }
+  }
+}
+
+
+
+
+.right {
+  width: 57%;
+  height: 170px;
+
+
+  h3 {
+    color: $secondary;
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  p {
+    color: $secondary;
+    font-family: 14px/14px "";
+    margin-bottom: 36px;
+  }
+  a {
+    border: 1px solid $info;
+    color: $secondary;
+    font-size: 14px;
+    padding: 8px 25px;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+
+}
+#popular-destination {
+  padding: 5% 10% ;
+  margin-bottom: 50px;
+
+  .title {
+    text-transform: capitalize;
+    margin: 70px 0;
+    font-weight: bold;
+    color: $primary;
+    position: relative;
+    margin-left:15px;
+    font-size: 18px;
+
+    &::after {
+      width: 5px;
+      height: 100%;
+      position: absolute;
+      left: -15px;
+      content: "";
+      background-color: $primary;
+
+    }
+  }
+  .content-grille {
+    /* meme agencement que les flex box */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px,1fr));
+    /* définir un espace entre les lignes */
+    gap: 32px;
+
+
+
+    .box {
+      /* cacher tous les éléments qui débordent */
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+      //width: 30%;
+      transition: 0.5s;
+      border-radius: 10px;
+      box-shadow: 0 0 10px $info;
+
+      img {
+        height: 100%;
+        width: 100%;
+        /* redimenssionner l'image pour remplir toute la zone */
+        object-fit: cover;
+        border-radius: 10px;
+
+      }
+    }
+  }
+}
+.box{
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: 0.5s;
+
+    h4 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+    & p {
+      padding: 2px;
+      font-size: 12px;
+    }
+    & a {
+      margin-top: 60px;
+      padding: 10px 60px;
+      border: 2px solid $info;
+      color: $primary;
+      font-weight: bold;
+
+    }
+  }
+  &:hover {
+    box-shadow: 0 0 10px $info;
+
+    .content {
+      transform: translateX(0);
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .film{
+    height: 500px;
+    flex-direction: column;
+  }
+}

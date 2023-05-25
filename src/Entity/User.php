@@ -210,4 +210,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function setCart(\App\Classe\Cart $cart)
+    {
+    }
 }

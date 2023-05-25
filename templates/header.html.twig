@@ -1,40 +1,49 @@
 {%  block header %}
 <header class="bgHeader">
-    <div class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="logo">
+        <img src="{{ asset("build/images/logo/phoenixLogo2.png") }}" width="100" alt="logo de de la plateforme de voyage">
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
 
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+
             <div class="collapse navbar-collapse justify-content-around " id="navbarNavAltMarkup">
 
-                <div class=" navbar-nav w-50" id="navLeft">
-                    <a class="nav-link active  col-2 d-flex justify-content-center align-items-center colorTextHeader" aria-current="page" href="{{ path('app_home') }}">Home</a>
-                    <a class="nav-link active col-3 d-flex justify-content-center align-items-center colorTextHeader" href="#">A propos</a>
-                    <img src="{{ asset("build/images/logo/phoenixLogo2.png") }}" width="auto" height="100">
-{#                    <a class="nav-link active col-3 d-flex justify-content-center align-items-center colorTextHeader" href="{{ path('app_home') }}#popular-destination">Destination</a>#}
+                <div class=" navbar-nav w-50 fs-5" id="navLeft ">
+                    <a class="nav-link active  col-2 d-flex justify-content-center align-items-center colorTextHeader" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
+                    <a class="nav-link active col-3 d-flex justify-content-center align-items-center colorTextHeader" href="{{ path('app_home') }}#a-propos">A propos</a>
+
                     <a class="nav-link active col-3 d-flex justify-content-center align-items-center colorTextHeader" href="{{ path('app_products') }}">Destinations</a>
 
-                    <a class="nav-link col-2 d-flex justify-content-center align-items-center colorTextHeader" href="#">Contact</a>
+                    <a class="nav-link col-2 d-flex justify-content-center align-items-center colorTextHeader"
+{#                       {% if app.request.attributes.get('_route')==='app_home'%}#}
+{#                            href="{{ path('app_home') }}#contact">Contact#}
+{#                        {% else if app.request.attributes.get('_route')==='app_products' %}#}
+{#                            href="{{ path('app_product') }}#contact">Contact#}
+{#                       {% endif %}#}
+
+                        href="{{ path('app_home') }}#contact">Contact
+                    </a>
                 </div>
 
-                <div class="nav-link-primary d-flex justify-content-around colorTextHeader" id="navRight">
-{#                    <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>#}
-{#                    <a class="nav-link" href="{{ path('app_login') }}"><img src="{{ asset("build/images/Icon/utilisateur1.png") }}" width="auto" height="30">  connexion</a>#}
+                <div class="nav-link-primary d-flex justify-content-around colorTextHeader fs-5" id="navRight">
 
                     {% if app.user %}
 
                         {% if is_granted('ROLE_ADMIN') %}
-                            <a class="nav-link" title="Accès au compte administrateur" href="{{ path('admin') }}"><img src="{{ asset("build/images/Icon/icons8-administrateur-homme-94.png") }}" width="auto" height="30"></a>
+                            <a class="nav-link" title="Accès au compte administrateur" href="{{ path('admin') }}"><img src="{{ asset("build/images/Icon/icons8-administrateur-homme-94.png") }}" alt="icon d'un administrateur" width="auto" height="30"></a>
                             <a class="nav-link" title="Accès au compte du client" href="{{ path('app_account') }}">  {{ app.user.lastname }}</a> |
                             <a class="nav-link" title="Se déconnecter" href="{{ path('app_logout') }}">deconnexion </a>
                         {% else %}
-                            <a class="nav-link" title="Accès à votre page" href="{{ path('app_account')}}"><img src="{{ asset("build/images/Icon/utilisateur1.png") }}" width="auto" height="30"> {{ app.user.lastname }}</a> |
+                            <a class="nav-link" title="Accès à votre page" href="{{ path('app_account')}}"><img src="{{ asset("build/images/Icon/utilisateur1.png") }}" alt="icon d'un utilisateur" width="auto" height="30"> {{ app.user.lastname }}</a> |
                             <a class="nav-link" href="{{ path('app_logout') }}">deconnexion</a>
                         {% endif%}
                         <a href="{{ path('app_cart') }}">
-                            <img src="{{ asset('build/images/Icon/panier.png') }}" width="22px" alt="icon de gestion des commandes">
+                            <img src="{{ asset('build/images/Icon/panier.png') }}" width="26px" alt="icon de gestion des commandes">
                         </a>
 
                     {% else %}
@@ -50,7 +59,7 @@
 
             </div>
         </div>
-    </div>
+    </nav>
 </header>
 {#<section id="home">#}
 

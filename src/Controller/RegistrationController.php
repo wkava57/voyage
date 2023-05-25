@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Cart;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
@@ -18,6 +19,7 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 class RegistrationController extends AbstractController
 {
+
     private EmailVerifier $emailVerifier;
 
     public function __construct(EmailVerifier $emailVerifier)
@@ -28,13 +30,16 @@ class RegistrationController extends AbstractController
     #[Route('/inscription', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
+//        instancier ma class User
         $user = new User();
+//    dans la variable form utilser la méthode créateForm pour injecter la class register type et user
         $form = $this->createForm(RegistrationFormType::class, $user);
+//        Analyser la requete s'il n'y a pas un post utiliser la méthode handleRequest
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $cart = new Cart();
-            $user->setCart($cart);
+//            $cart = new Cart();
+//            $user->setCart($cart);
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -43,7 +48,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $entityManager->persist($cart);
+//            $entityManager->persist($cart);
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -59,7 +64,7 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('app_check_email');
         }
-
+// Passer formulaire en variable à mon template, renseigner en 2eme paramètre un tableau avec la clé
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

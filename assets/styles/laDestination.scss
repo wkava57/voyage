@@ -1,0 +1,41 @@
+@import "color";
+
+.destination{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.picture{
+  .card {
+    img {
+      border-radius: 15px;
+    }
+  }
+}
+
+.price{
+  height: 100px;
+  font-size: 4em;
+  text-align: end;
+}
+.btnReservation{
+  height: 100px;
+  text-align: end;
+}
+.btnReservation{
+  button{
+    background-color: $info;
+    border-radius: 12px;
+  }
+}
+.text{
+  p{
+    text-align: end;
+  }
+}
+.cardDescription{
+  h4{
+    margin-top: 50px;
+  }
+}

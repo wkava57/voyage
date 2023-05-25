@@ -1,0 +1,27 @@
+@import "color";
+
+#road{
+  height: 100vh;
+  width: 100%;
+  background-image: url('../images/adresse.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 130px;
+  .addresses {
+
+    .container{
+
+      form{
+        width: 90%;
+        //height: ;
+        margin: auto;
+
+      }
+
+      & a{
+        color: $success;
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ namespace App\Classe;
 
 
 use App\Entity\Product;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -11,14 +12,14 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class Cart
 {
 //    ajouter les variable;
-        private  RequestStack $requestStack;
-        private  $entityManager;
+    private $entityManager;
 
-
+    private  RequestStack $requestStack;
     public function __construct(EntityManagerInterface $entityManager, RequestStack $requestStack)
         {
             $this->requestStack = $requestStack;
             $this->entityManager = $entityManager;
+
         }
 // une fonction pour remplir mon panier
         public function add($id): void
@@ -44,7 +45,7 @@ class Cart
         {
             return $this->getSession()->remove('cart');
         }
-
+//récupérer
         public function get()
         {
             return $this->getSession()->get('cart');
@@ -57,7 +58,7 @@ class Cart
 
         public function delete(int $id)
         {
-            //récupère le contenu du cart
+            //récupère le contenu du cart à partir de la session en utilisant l'objet $requestSack
             $cart = $this->requestStack->getSession()->get('cart', []);
         //j'enlève l'id du produit de ma session
             unset($cart[$id]);
@@ -80,6 +81,7 @@ class Cart
             return $this->getSession()->set('cart', $cart);
 
         }
+//*************************************************     getFull           *****************************************************
 
         public function getFull(): array
         {
@@ -93,6 +95,7 @@ class Cart
                     $this->delete($id);
                     continue;
                 }
+//                $cart est défini et il contient un élément composé de 2 clés
                 $cartAll[] = [
                     'product' => $product_object,
                     'quantity' => $quantity
@@ -102,6 +105,5 @@ class Cart
 // return la variable une fois la fonction exécuté à cartController pour transmettre à twig
             return $cartAll;
         }
-
 
 }

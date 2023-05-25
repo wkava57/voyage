@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Classe\Cart;
 use App\Entity\Product;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -15,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartController extends AbstractController
 {
     private $entityManager;
-
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
@@ -23,36 +23,12 @@ class CartController extends AbstractController
 
 //    *************************************************  PANIER  *******************************************************
     #[Route('/panier', name: 'app_cart')]
-    public function index(Cart $cart, RequestStack $requestStack): Response
+    public function index(Cart $cart): Response
     {
-
-//        $cart = $requestStack->getSession()->get('cart');
-//        if (empty($cart)) {
-//            return $this->redirectToRoute('app_products');
-//        }
-
-//        $cartAll = [];
-//
-//        foreach ($cart->get() as $id => $quantity) {
-//            $product_object = $this->entityManager->getRepository(Product::class)->findOneById($id);
-//            if (!$product_object) {
-//                $this->delete($id);
-//                continue;
-//            }
-//            $cartAll[] = [
-//                'product' => $product_object,
-//                'quantity' => $quantity
-//            ];
-//        }
         return $this->render('cart/index.html.twig', [
-//            'cart' => $cartAll
                 'cart' => $cart->getFull()
 
-
-
         ]);
-
-
     }
 
 //    ************************************************ ADD CART ********************************************************
@@ -96,11 +72,6 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('app_cart');
     }
-
-
-
-
-
 
 }
 

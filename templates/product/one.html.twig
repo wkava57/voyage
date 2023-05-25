@@ -28,7 +28,12 @@
                 <span>{{ (products.price /100)|number_format(2) }} €</span>
             </div>
             <div class="btnReservation">
-                <a href="{{ path('add_cart', {'id' : products.id}) }}">Réservation</a>
+                {% if app.user %}
+                    <a href="{{ path('add_cart', {'id' : products.id}) }}">Réservation</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Réservation</a>
+                {% endif %}
+
             </div>
             <div class="text">
                 {{ products.description }}

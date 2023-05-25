@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
     <section id="home">
         <div class="formulaire">
             <h1 class="m-5">Inscription</h1>
@@ -14,30 +13,24 @@
                     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
                 {% endfor %}
 
-
-
                 {{ form_start(registrationForm) }}
-                    {{ form_row(registrationForm.lastname) }}
-                    {{ form_row(registrationForm.firstname) }}
-                    {{ form_row(registrationForm.telephone) }}
-                    {{ form_row(registrationForm.email) }}
-{#                    {{ form_row(registrationForm.Password) }}#}
-{#                    {{ form_row(registrationForm.plainPassword) }}#}
-                    {{ form_row(registrationForm.Password, {
-                        label: 'Password'
-                    }) }}
 
+                    <div class="row">
+                        <div class="col-6">{{ form_row(registrationForm.lastname) }}</div>
+                        <div class="col-md-6">{{ form_row(registrationForm.firstname) }}</div>
+                        <div class="col-md-6">{{ form_row(registrationForm.telephone) }}</div>
+                        <div class="col-md-6">{{ form_row(registrationForm.email) }}</div>
 
-
-                <button type="submit" class="btn">Submit</button>
-                <button type="reset" value="Réinitialiser le formulaire"></button>
-
+                        {{ form_row(registrationForm.Password, {
+                            label: 'Password'
+                            })
+                        }}
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
                 {{ form_end(registrationForm) }}
 
             </div>
         </div>
     </section>
-
-
 
 {% endblock %}

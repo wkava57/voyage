@@ -8,21 +8,38 @@
     <section id="road">
         <div class="adresses">
             <div class="container">
-                <a href="" class="btn btn-info float-end">Ajouter une adresse</a>
+                <a href="{{ path('app_account_address_add') }}" class="btn btn-info float-end">Ajouter une adresse</a>
                 <h1>Mes adresses</h1>
-                <p>
-                    C'est dans cette page que je pourrais gérer toutes mes adresses. <br>
-                    <a href="{{ path('app_account') }}">Retour</a>
-                </p>
+                <a href="{{ path('app_account') }}">Retour</a>
+                <a href="{{ path('app_account_address_add') }}" class="btn btn-info float-end">Paiements</a>
+
                 <hr>
                 {% if app.user.addresses|length == 0 %}
-                    <p>
-                        Vous n'avez pas encore d'adresse dans votre compte client. Pour ajouter une, veuillez
+                    <p class="text-center">
+                        Vous n'avez pas encore ajouté d'adresse dans votre compte client. Pour ajouter une, veuillez
                         <a href="">cliquer ici</a>
                     </p>
                 {% else %}
-                    AFFICHER DES ADRESSES
+                    <div class="row">
+                        {% for address in app.user.addresses %}
+                            <div class="col-md-4">
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ address.lastname }}</h5>
+                                        <p class="card-text">
+                                            {{ address.address }},<br/>
+                                            {{ address.postal }} - {{ address.city }} - {{ address.country }}
+                                        </p>
+                                        <a href="{{ path('app_account_address_edit', {'id' : address.id}) }}">Modifier</a> | <a href="{{ path('app_account_address_delete', { 'id' : address.id }) }}">Supprimer</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+
                 {% endif %}
+
             </div>
         </div>
     </section>

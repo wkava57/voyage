@@ -1,0 +1,30 @@
+{% block footer %}
+    <footer >
+        <div class="title">
+            <h1>CONTACT</h1>
+        </div>
+
+        <div class="container">
+            <div class="geolocation">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d693.4014933410119!2d5.357382169633283!3d45.959155098192916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478b51975daebea3%3A0x70b98011442f9ae1!2sPl.%20du%20Champ%20de%20Mars%2C%2001500%20Amb%C3%A9rieu-en-Bugey!5e0!3m2!1sfr!2sfr!4v1684783390091!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+
+                ></iframe>
+            </div>
+            <div id="contact">
+                <div class="tel">
+                    <img src= "{{ asset("build/images/icon/appel-telephonique.png") }}" alt="icon de telephone" width="40px">
+                    <span>07 82 22 61 99</span>
+                </div>
+                <div class="mail">
+                    <img src="{{ asset("build/images/icon/email.png") }}" alt="icon d'email" width="40px>
+                    <span>wkava57@hotmail.com</span>
+                </div>
+                <div class="adresse">
+                    <img src="{{ asset("build/images/icon/emplacement.png") }}" alt="icon de géolocalisation" width="40px">
+                    <span>place du Champ de Mars</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}

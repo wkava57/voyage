@@ -44,6 +44,7 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Voyage');
+//            ->setImage('')
 //            A voir pour faire un lien vers la page du compte administrator
 //            ->setButton('return');
 

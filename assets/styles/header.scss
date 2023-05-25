@@ -1,0 +1,29 @@
+@import "color";
+
+.bgHeader{
+  height: 100px;
+  width: 100vw;
+  color: $info;
+  position: fixed;
+  background: $secondary;
+  z-index: 99999;
+  display: flex;
+  justify-content: space-around;
+
+
+
+}
+.navbar{
+  height: 100%;
+  width: 90%;
+}
+
+#navRight{
+  width: 270px;
+}
+
+$blue: #29d9d5;
+.colorTextHeader {
+  color: $blue !important;
+}
+

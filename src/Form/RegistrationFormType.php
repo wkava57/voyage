@@ -109,8 +109,7 @@ class RegistrationFormType extends AbstractType
 //                'contraints' => [
 //
 //                    new Regex([
-//                        'pattern' => '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
-//
+//                        'pattern' => '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',//
 ////                        'meessage' => 'Votre mot de passe doit contenir au moins une majuscule
 ////                        , une minuscule, un chiffre, un caractère spécial et un mimimum de 12 caractères.',
 //                    ]),//
@@ -129,7 +128,7 @@ class RegistrationFormType extends AbstractType
                     ]
                 ],
                 'second_options' => [
-                    'label' => 'Repeat Password',
+                    'label' => 'Confirmer le Mot de passe',
                     'attr' => [
                         'placeholder' => 'Veuillez confirmer votre mot de passe'
                     ]

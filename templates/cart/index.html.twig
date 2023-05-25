@@ -28,18 +28,19 @@
                     {% for product in cart %}
                     <tr>
                         <th>
-                            <img src="../uploads/{{ product.product.illustration }}" alt="{{ product.product.destination }}" height="50px">
+                            <a title="Revenir sur la page des destinations" href="{{ path('app_products') }}"><img src="../uploads/{{ product.product.illustration }}" alt="{{ product.product.destination }}" height="50px"></a>
+
                         </th>
                         <td>{{ product.product.depart }}</td>
                         <td>{{ product.product.destination }}</td>
 
                         <td class="modif text-center">
 
-                            <a href="{{ path('decrease_cart', {'id' : product.product.id} ) }}">
+                            <a title="Supprimer une personne" href="{{ path('decrease_cart', {'id' : product.product.id} ) }}">
                                 <img src="{{ asset('build/images/Icon/moins.png') }}" width="20px" alt="Supprimer une quantité">
                             </a>
-                            x   {{ product.quantity }}
-                            <a href="{{ path('add_cart', {'id' : product.product.id}) }}">
+                               {{ product.quantity }}
+                            <a title="Ajouter une personne" href="{{ path('add_cart', {'id' : product.product.id}) }}">
                                 <img src="{{ asset('build/images/Icon/plus.png') }}" width="20px" alt="Rajouter une quantité">
                             </a>
                         </td>
@@ -63,7 +64,7 @@
                     <b>Total de mon panier :</b>   {{ (total /100)|number_format(2, ',', '') }} €
 
                     <div class="bouton mt-5">
-                        <a href="" class="btn btn-success btn-block">Valider mon panier</a>
+                        <a href="{{ path('app_account_address_add') }}" class="btn btn-success btn-block">Valider mon panier</a>
                     </div>
                 </div>
 
@@ -72,7 +73,7 @@
     {% else %}
 
         <div class="message">
-            <p><b>Votre panier est vide.  <a href="{{ path('app_products') }}">choisir une autre destination</a></b></p>
+            <p><b>Votre panier est vide.  <a href="{{ path('app_products') }}">choisir une autre destination ?</a></b></p>
         </div>
 
 
